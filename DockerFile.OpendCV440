@@ -1,0 +1,142 @@
+FROM ubuntu:20.04
+LABEL Description="Docker For OpenCV:4.4.0"
+
+# to display with host
+ENV DISPLAY=host.docker.internal:0.0
+
+# Install common dependencies
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    cmake \
+    git \
+    gfortran \
+    pkg-config
+
+# Install OpenCV dependencies
+RUN apt-get install -y \
+    libgtk2.0-dev \
+    libavcodec-dev \
+    libavformat-dev \
+    libswscale-dev \
+    python3-dev \
+    python3-numpy \
+    libtbb2 \
+    libtbb-dev \
+    libjpeg-dev \
+    libpng-dev \
+    libtiff-dev \
+    libdc1394-22-dev \
+    libv4l-dev \
+    v4l-utils \
+    libxvidcore-dev \
+    libx264-dev \
+    libopenblas-dev \
+    liblapack-dev \
+    libatlas-base-dev \
+    gfortran \
+    libhdf5-dev \
+    libprotobuf-dev \
+    protobuf-compiler \
+    libgflags-dev \
+    libgoogle-glog-dev \
+    libgphoto2-dev \
+    libeigen3-dev \
+    libhdf5-serial-dev \
+    libopenexr-dev \
+    libgstreamer1.0-dev \
+    libgstreamer-plugins-base1.0-dev \
+    libavresample-dev \
+    libgstreamer-plugins-bad1.0-dev \
+    libgstreamer-plugins-good1.0-dev \
+    libgstreamer-plugins-ugly1.0-dev \
+    libgstrtspserver-1.0-dev \
+    libtesseract-dev \
+    libleptonica-dev \
+    tesseract-ocr-eng \
+    tesseract-ocr-script-latn \
+    tesseract-ocr-script-cyrl \
+    tesseract-ocr-script-deva \
+    tesseract-ocr-script-hang \
+    tesseract-ocr-script-hebr \
+    tesseract-ocr-script-thaa \
+    tesseract-ocr-script-thai \
+    tesseract-ocr-script-arab \
+    tesseract-ocr-script-hans \
+    tesseract-ocr-script-jpan \
+    tesseract-ocr-script-knda \
+    tesseract-ocr-script-telu \
+    tesseract-ocr-script-cher \
+    tesseract-ocr-script-grek \
+    tesseract-ocr-script-gujr \
+    tesseract-ocr-script-khmr \
+    tesseract-ocr-script-kor \
+    tesseract-ocr-script-mlym \
+    tesseract-ocr-script-orya \
+    tesseract-ocr-script-sinh \
+    tesseract-ocr-script-taml \
+    tesseract-ocr-script-viet \
+    tesseract-ocr-script-amha \
+    tesseract-ocr-script-ethi \
+    tesseract-ocr-script-laoo \
+    tesseract-ocr-script-myan \
+    tesseract-ocr-script-osma \
+    tesseract-ocr-script-syrc \
+    tesseract-ocr-script-tibt \
+    tesseract-ocr-script-geor \
+    tesseract-ocr-script-goth \
+    tesseract-ocr-script-khmr \
+    tesseract-ocr-script-mymr \
+    tesseract-ocr-script-roman \
+    tesseract-ocr-script-tglg \
+    tesseract-ocr-script-hrkt \
+    tesseract-ocr-script-thai \
+    tesseract-ocr-script-beng \
+    tesseract-ocr-script-deva \
+    tesseract-ocr-script-guru \
+    tesseract-ocr-script-knda \
+    tesseract-ocr-script-mlym \
+    tesseract-ocr-script-orya \
+    tesseract-ocr-script-sinh \
+    tesseract-ocr-script-taml \
+    tesseract-ocr-script-telu \
+    tesseract-ocr-script-arab \
+    tesseract-ocr-script-hebr \
+    tesseract-ocr-script-thaa \
+    tesseract-ocr-script-lisu \
+    tesseract-ocr-script-mymr \
+    tesseract-ocr-script-syrc \
+    tesseract-ocr-script-tibt \
+    tesseract-ocr-script-armn \
+    tesseract-ocr-script-cans \
+    tesseract-ocr-script-cher \
+    tesseract-ocr-script-ethi \
+    tesseract-ocr-script-frak \
+    tesseract-ocr-script-hang \
+    tesseract-ocr-script-jamo \
+    tesseract-ocr-script-khmr \
+    tesseract-ocr-script-mong \
+    tesseract-ocr-script-osma \
+    tesseract-ocr-script-sora \
+    tesseract-ocr-script-sund \
+    tesseract-ocr-script-sylo \
+    tesseract-ocr-script-telu \
+    tesseract-ocr-script-thai
+
+# Additional dependencies
+RUN apt-get install -y \
+    libcanberra-gtk3-module \
+    libglew-dev \
+    libjpeg8-dev \
+    libjpeg-turbo8-dev \
+    liblapacke-dev \
+    libopenblas-dev \
+    libpostproc-dev \
+    libxine2-dev \
+    zlib1g-dev \
+    python-dev \
+    python-numpy \
+    python3-matplotlib \
+    qv4l2
+
+# Cleanup
+RUN apt-get autoremove -y && apt-get clean && rm -rf /var/lib/apt/lists/*

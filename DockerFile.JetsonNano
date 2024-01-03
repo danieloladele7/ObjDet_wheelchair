@@ -1,0 +1,6 @@
+FROM nvcr.io/nvidia/l4t-base:35.3.1
+# https://catalog.ngc.nvidia.com/orgs/nvidia/containers/l4t-base
+LABEL Description="Docker For Jetson Nano on Desktop"
+
+# to display with host
+ENV DISPLAY=host.docker.internal:0.0
